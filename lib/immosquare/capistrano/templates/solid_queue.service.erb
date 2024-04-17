@@ -13,8 +13,8 @@ ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -TERM $MAINPID
 
 
-StandardOutput=append:<%= shared_path %>/log/solidqueue_access.log
-StandardError=append:<%= shared_path %>/log/solidqueue_error.log
+StandardOutput=append:<%= shared_path %>/log/solid_queue_access.log
+StandardError=append:<%= shared_path %>/log/solid_queue_error.log
 
 RestartSec=1
 Restart=on-failure

@@ -1,0 +1,25 @@
+[Unit]
+Description=SolidQueue for <%= "#{fetch(:application)} (#{fetch(:stage)})" %>
+After=syslog.target network.target
+
+[Service]
+Type=simple
+Environment=RAILS_ENV=<%= fetch(:stage) %>
+User=<%= fetch(:solid_queue_user) %>
+WorkingDirectory=<%= deploy_to %>
+
+ExecStart=<%= Capistrano::SolidQueue::Helpers.expanded_bundle_command %> exec rake solid_queue:start
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/bin/kill -TERM $MAINPID
+
+
+StandardOutput=append:<%= shared_path %>/log/solidqueue_access.log
+StandardError=append:<%= shared_path %>/log/solidqueue_error.log
+
+RestartSec=1
+Restart=on-failure
+
+SyslogIdentifier=solidqueue_<%= fetch(:application) %>
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,27 @@
+[Unit]
+Description=Sidekiq for <%= "#{fetch(:application)} (#{fetch(:stage)})" %>
+After=syslog.target network.target
+
+
+[Service]
+Type=notify
+WatchdogSec=10
+User=<%= fetch(:sidekiq_user) %>
+WorkingDirectory=<%= current_path %>
+
+ExecStart=<%= Capistrano::Immosquare::Helpers.expanded_bundle_command %> exec sidekiq -e production
+
+UMask=0002
+
+RestartSec=1
+Restart=on-failure
+
+
+StandardOutput=append:<%= shared_path %>/log/sidekiq_access.log
+StandardError=append:<%= shared_path %>/log/sidekiq_error.log
+
+
+SyslogIdentifier=<%= fetch(:sidekiq_service_unit_name) %>
+
+[Install]
+WantedBy=default.target

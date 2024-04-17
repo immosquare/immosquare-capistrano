@@ -1,15 +1,15 @@
 
-namespace :solid_queue do
+namespace :sidekiq do
   ##============================================================##
-  ## Install SolidQueue service
+  ## Install Sidekiq service
   ##============================================================##
-  desc "Install SolidQueue service"
+  desc "Install Sidekiq service"
   task :install do
     on roles(:app) do
-      template_path = File.read(Capistrano::Immosquare::Helpers.template_path("solid_queue"))
+      template_path = File.read(Capistrano::Immosquare::Helpers.template_path("sidekiq"))
       result        = ERB.new(template_path).result(binding)
-      result_path   = Capistrano::Immosquare::Helpers.result_path("solid_queue")
-      service_name  = Capistrano::Immosquare::Helpers.service_name("solid_queue")
+      result_path   = Capistrano::Immosquare::Helpers.result_path("sidekiq")
+      service_name  = Capistrano::Immosquare::Helpers.service_name("sidekiq")
 
       ##============================================================##
       ## Upload the service file to the server
@@ -30,12 +30,12 @@ namespace :solid_queue do
   end
 
   ##============================================================##
-  ## Uninstall SolidQueue service
+  ## Uninstall Sidekiq service
   ##============================================================##
-  desc "Uninstall SolidQueue service"
+  desc "Uninstall Sidekiq service"
   task :uninstall do
     on roles(:app) do
-      service_name = Capistrano::Immosquare::Helpers.service_name("solid_queue")
+      service_name = Capistrano::Immosquare::Helpers.service_name("sidekiq")
 
       if test("systemctl list-units --full -all | grep -Fq '#{service_name}'")
         sudo("systemctl stop #{service_name}")
@@ -50,32 +50,32 @@ namespace :solid_queue do
 
 
   ##============================================================##
-  ## Start solid_queue
+  ## Start sidekiq
   ##============================================================##
-  desc "Start solid_queue"
+  desc "Start sidekiq"
   task :start do
     on roles(:app) do
-      sudo "systemctl start #{Capistrano::Immosquare::Helpers.service_name("solid_queue")}"
+      sudo "systemctl start #{Capistrano::Immosquare::Helpers.service_name("sidekiq")}"
     end
   end
 
   ##============================================================##
-  ## Stop solid_queue (force immediate termination)
+  ## Stop sidekiq (force immediate termination)
   ##============================================================##
-  desc "Stop solid_queue (force immediate termination)"
+  desc "Stop sidekiq (force immediate termination)"
   task :stop do
     on roles(:app) do
-      sudo "systemctl stop #{Capistrano::Immosquare::Helpers.service_name("solid_queue")}"
+      sudo "systemctl stop #{Capistrano::Immosquare::Helpers.service_name("sidekiq")}"
     end
   end
 
   ##============================================================##
-  ## Restart solid_queue
+  ## Restart sidekiq
   ##============================================================##
-  desc "Restart solid_queue"
+  desc "Restart sidekiq"
   task :restart do
     on roles(:app) do
-      sudo "systemctl restart #{Capistrano::Immosquare::Helpers.service_name("solid_queue")}"
+      sudo "systemctl restart #{Capistrano::Immosquare::Helpers.service_name("sidekiq")}"
     end
   end
 end

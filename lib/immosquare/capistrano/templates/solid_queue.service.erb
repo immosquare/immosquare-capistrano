@@ -8,7 +8,7 @@ Environment=RAILS_ENV=<%= fetch(:stage) %>
 User=<%= fetch(:solid_queue_user) %>
 WorkingDirectory=<%= current_path %>
 
-ExecStart=<%= Capistrano::SolidQueue::Helpers.expanded_bundle_command %> exec rake solid_queue:start
+ExecStart=<%= Capistrano::Immosquare::Helpers.expanded_bundle_command %> exec sidekiq -e production
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -TERM $MAINPID
 
@@ -22,4 +22,4 @@ Restart=on-failure
 SyslogIdentifier=<%= fetch(:solid_queue_service_unit_name) %>
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

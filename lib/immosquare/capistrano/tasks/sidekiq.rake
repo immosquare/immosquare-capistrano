@@ -22,7 +22,7 @@ namespace :sidekiq do
       sudo "mv #{result_path} /etc/systemd/system/#{service_name}"
 
       ##============================================================##
-      ## Reload the systemd daemon and quiet the service
+      ## Reload the systemd daemon and enable the service
       ##============================================================##
       sudo "systemctl daemon-reload"
       sudo "systemctl enable #{service_name}"

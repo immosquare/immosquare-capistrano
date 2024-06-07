@@ -8,7 +8,7 @@ Type=notify
 WatchdogSec=10
 User=<%= fetch(:sidekiq_user) %>
 WorkingDirectory=<%= current_path %>
-ExecStart=<%= "#{Capistrano::Immosquare::Helpers.expanded_bundle_command}  exec sidekiq -e #{fetch(:stage)}" %>
+ExecStart=<%= "#{Capistrano::Immosquare::Helpers.expanded_bundle_command.gsub("~", "/home/#{fetch(:sidekiq_user)}")} exec sidekiq -e #{fetch(:stage)}" %>
 
 UMask=0002
 

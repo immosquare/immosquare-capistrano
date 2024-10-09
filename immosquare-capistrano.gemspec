@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.name          = "immosquare-capistrano"
   spec.version       = ImmosquareCapistrano::VERSION.dup
-  spec.authors       = ["IMMO SQUARE"]
+  spec.authors       = ["immosquare"]
   spec.email         = ["jules@immosquare.com"]
   spec.description   = "Puma, Sidekiq & SolidQueue services integrations for Capistrano"
   spec.summary       = "Puma, Sidekiq & SolidQueue services integrations for Capistrano"

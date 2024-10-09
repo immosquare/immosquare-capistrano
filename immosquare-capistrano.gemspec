@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jules@immosquare.com"]
   spec.description   = "Puma, Sidekiq & SolidQueue services integrations for Capistrano"
   spec.summary       = "Puma, Sidekiq & SolidQueue services integrations for Capistrano"
-  spec.homepage      = "https://github.com/IMMOSQUARE/immosquare-capistrano"
+  spec.homepage      = "https://github.com/immosquare/immosquare-capistrano"
 
   spec.files         = Dir["lib/**/*"]
   spec.require_paths = ["lib"]

@@ -1,4 +1,3 @@
-
 namespace :solid_queue do
   ##============================================================##
   ## Install SolidQueue service

@@ -1,4 +1,3 @@
-
 namespace :sidekiq do
   ##============================================================##
   ## Install Sidekiq service

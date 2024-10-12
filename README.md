@@ -1,27 +1,35 @@
 # Immosquare Capistrano
 
-This gem provides a collection of Capistrano tasks to manage the deployment and systemd services for Puma, Sidekiq, and SolidQueue.
+This gem provides a collection of Capistrano tasks to manage the deployment and systemd services for Puma, Sidekiq, and SolidQueue & github Packages
 
 ## Installation
-
-Add this line to your application's Gemfile:
 
 ```ruby
 gem "immosquare-capistrano"
 ```
 
-And then execute:
+## Capfile
 
-```
-bundle
+Add the modules that interest you. For example, to include all modules, you can add:
+
+```ruby
+require "immosquare/capistrano/github"
+require "immosquare/capistrano/puma"
+require "immosquare/capistrano/sidekiq"
+require "immosquare/capistrano/solid_queue"
 ```
 
-Or install it yourself as:
+## Github Package
 
-```
-gem install immosquare-capistrano
+To use private packages from GitHub, configure Bundler in your `deploy.rb` file:
+
+```ruby
+# deploy.rb
+set :github_package_username,              "xxx"
+set :github_package_personal_access_token, "yyy"
 ```
 
+This will allow Bundler to authenticate and install private gems from GitHub Packages.
 
 
 ## Puma Integration

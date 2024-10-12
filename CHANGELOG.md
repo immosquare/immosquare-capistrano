@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.1.4] - 2024-10-11
+
+- Add Github Package Integration
+
 ## [0.1.3] - 2024-06-07
 
 - Change relative paths for absolute paths

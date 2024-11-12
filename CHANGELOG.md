@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.1.5] - 2024-11-12
+
+- Add Rvm integration
+
 ## [0.1.4] - 2024-10-11
 
 - Add Github Package Integration

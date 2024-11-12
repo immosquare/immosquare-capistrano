@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     immosquare-capistrano (0.1.4)
-      capistrano (~> 3.0)
+      capistrano (>= 3.0, < 100.0)
 
 GEM
   remote: https://rubygems.org/

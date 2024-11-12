@@ -1,3 +1,6 @@
+## [0.1.7] - 2024-11-12
+- improve rvm tasks
+
 ## [0.1.6] - 2024-11-12
 - improve rvm tasks to check and install gemset
 

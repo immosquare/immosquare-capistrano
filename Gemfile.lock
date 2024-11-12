@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    immosquare-capistrano (0.1.6)
+    immosquare-capistrano (0.1.7)
       capistrano (>= 3.0, < 100.0)
 
 GEM

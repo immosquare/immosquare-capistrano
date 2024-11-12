@@ -65,4 +65,38 @@ namespace :rvm do
       end
     end
   end
+
+  ##============================================================##
+  ## Update .ruby-gemset and .ruby-version files with
+  ## values from the rvm_ruby_version variable
+  ##============================================================##
+  task :update_rvm_dot_files do
+    on roles(:app) do
+      rvm_ruby_version = fetch(:rvm_ruby_version)
+      ruby_version     = rvm_ruby_version.split("@").first
+      gemset_name      = rvm_ruby_version.split("@").last
+
+      info "Updating .ruby-version file with #{ruby_version}"
+      info "Updating .ruby-gemset file with #{gemset_name}"
+
+      ##============================================================##
+      ## Mettre à jour les fichiers dans `release_path`
+      ## The gem capistrano-bundler launch
+      ## bundle config --local deployment true with the release_path
+      ##============================================================##
+      within release_path do
+        execute :echo, ruby_version.to_s, ">", ".ruby-version"
+        execute :echo, gemset_name.to_s, ">", ".ruby-gemset"
+      end
+
+      ##============================================================##
+      ## To have the same version in the current path to lauch
+      ## bundle exec commands from the current path
+      ##============================================================##
+      within current_path do
+        execute :echo, ruby_version.to_s, ">", ".ruby-version"
+        execute :echo, gemset_name.to_s, ">", ".ruby-gemset"
+      end
+    end
+  end
 end

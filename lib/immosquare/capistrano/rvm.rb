@@ -13,3 +13,8 @@ load File.expand_path("tasks/rvm.rake", __dir__)
 Capistrano::DSL.stages.each do |stage|
   after stage, "rvm:hook"
 end
+
+##============================================================##
+## Update .ruby-gemset &&  ruby-version files
+##============================================================##
+before "deploy:updated", "rvm:update_rvm_dot_files"

@@ -1,6 +1,5 @@
 require_relative "defaults"
 
-
 ##============================================================##
 ## We load rvm tasks
 ##============================================================##
@@ -13,5 +12,4 @@ load File.expand_path("tasks/rvm.rake", __dir__)
 ##============================================================##
 Capistrano::DSL.stages.each do |stage|
   after stage, "rvm:hook"
-  # after stage, "rvm:check"
 end

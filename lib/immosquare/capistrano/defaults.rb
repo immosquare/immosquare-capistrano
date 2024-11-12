@@ -14,11 +14,5 @@ namespace :load do
     ## SolidQueue
     ##============================================================##
     set_if_empty :solid_queue_service_unit_name, -> { "solid_queue_#{fetch(:application)}_#{fetch(:stage)}" }
-
-    ##============================================================##
-    ## rvm
-    ##============================================================##
-    set_if_empty :rvm_ruby_version,  -> { "default" }
-    set_if_empty :rvm_map_bins,      -> { ["gem", "rake", "ruby", "bundle"] }
   end
 end

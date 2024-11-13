@@ -1,13 +1,6 @@
 module Capistrano
   module Immosquare
     module Helpers
-      ##============================================================##
-      ## Get the path to bundle command
-      ##============================================================##
-      def self.expanded_bundle_command
-        SSHKit.config.command_map[:bundle].to_s
-      end
-
       def self.template_path(service)
         "#{File.dirname(__FILE__)}/templates/#{service}.service.erb"
       end

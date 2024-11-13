@@ -8,7 +8,7 @@ Environment=RAILS_ENV=<%= fetch(:stage) %>
 User=<%= fetch(:solid_queue_user) %>
 WorkingDirectory=<%= current_path %>
 
-ExecStart=<%= "#{Capistrano::Immosquare::Helpers.expanded_bundle_command.gsub("~", "/home/#{fetch(:solid_queue_user)}")} exec rake solid_queue:start" %>
+ExecStart=<%= "#{SSHKit.config.command_map[:bundle]} exec rake solid_queue:start" %>
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStop=/bin/kill -TERM $MAINPID
 

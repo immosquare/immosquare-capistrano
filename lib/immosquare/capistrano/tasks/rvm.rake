@@ -41,7 +41,8 @@ namespace :rvm do
       ## Set the RVM prefix for the commands
       ##============================================================##
       ["gem", "rake", "ruby", "bundle"].each do |command|
-        SSHKit.config.command_map.prefix[command.to_sym].unshift("#{rvm_bin_path} #{rvm_ruby_version} do")
+        cmd = "#{rvm_bin_path} #{rvm_ruby_version} do"
+        SSHKit.config.command_map.prefix[command.to_sym] << cmd if !SSHKit.config.command_map.prefix[command.to_sym].include?(cmd)
       end
 
 

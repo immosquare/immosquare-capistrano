@@ -8,7 +8,7 @@ Type=notify
 WatchdogSec=10
 User=<%= fetch(:sidekiq_user) %>
 WorkingDirectory=<%= current_path %>
-ExecStart=<%= "#{SSHKit.config.command_map[:bundle]} exec sidekiq -e #{fetch(:stage)}" %>
+ExecStart=<%= "#{SSHKit.config.command_map[:bundle].gsub("~", "/home/#{fetch(:sidekiq_user)}")} exec sidekiq -e #{fetch(:stage)}" %>
 
 UMask=0002
 

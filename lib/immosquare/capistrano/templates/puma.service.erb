@@ -8,7 +8,7 @@ Type=notify
 WatchdogSec=10
 User=<%= fetch(:puma_user) %>
 WorkingDirectory=<%= current_path %>
-ExecStart=<%= "#{SSHKit.config.command_map[:bundle]} exec puma -e #{fetch(:stage)}" %>
+ExecStart=<%= "#{SSHKit.config.command_map[:bundle].gsub("~", "/home/#{fetch(:puma_user)}")} exec puma -e #{fetch(:stage)}" %>
 ExecReload=/bin/kill -USR1 $MAINPID
 
 

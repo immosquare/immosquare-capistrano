@@ -38,7 +38,7 @@ require "immosquare/capistrano/solid_queue"
 To use RVM, configure Bundler in your `deploy.rb` file:
 
 ```ruby
-set :rvm_ruby_version, "ruby-3.3.6@my-gemset"
+set :rvm_ruby_version, "ruby-3.4.1@my-gemset"
 ```
 
 
